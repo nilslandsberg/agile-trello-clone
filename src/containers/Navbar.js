@@ -1,7 +1,7 @@
 
 import { Navbar, Nav, Container, Dropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
-import OrgUsers from "./OrgUsers";
+// import OrgUsers from "./OrgUsers";
 import Login from "../components/Login";
 import SignUp from "../components/SignUp";
 import UserLogout from "../components/UserLogout";
@@ -16,7 +16,7 @@ const NavBar = () => {
     if (userIsLoggedIn) {
       return (
         <>
-          <OrgUsers />
+          {/* <OrgUsers /> */}
           <Dropdown>
             <Dropdown.Toggle className="nav-dropdowns" variant="light" id="dropdown-logout">
               {userEmail}

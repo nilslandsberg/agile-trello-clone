@@ -6,14 +6,12 @@ import { signup } from "../features/userAuthSlice";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
 import SignupAlert from "./SignupAlert";
 import { useState } from "react";
 
 
 const SignUpForm = () => {
   const errorMessage = useSelector((state) => state.authMessage);
-  const user = useSelector((state) => state.userAuth);
   const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
   const navigate = useNavigate();

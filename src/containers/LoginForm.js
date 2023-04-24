@@ -32,7 +32,7 @@ const LoginForm = () => {
         <LoginAlert variant="danger" message='test' />
       }
     }
-  }, [user, errorMessage]);
+  }, [user, errorMessage, dispatch, navigate]);
   
 
   return (

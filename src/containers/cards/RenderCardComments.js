@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import CardCommentForm from "./CardCommentForm";
 
 const RenderCardComments = () => {
-  const userAuth = useSelector(state => state.userAuth);
   const cardComments = useSelector(state => state.cardComments.cardComments)
   
   const renderComments = () => {

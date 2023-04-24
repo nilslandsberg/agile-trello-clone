@@ -1,7 +1,5 @@
-import { useContext } from "react";
 import { Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchColumnsAction } from "../../features/columnsSlice";
 import { setCardDetailModalClosed } from "../../features/modalOpenSlice";
 import CardTextChange from "./CardTextChange";
 import CardTitleChange from "./CardTitleChange";

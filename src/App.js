@@ -9,7 +9,7 @@ import SignUpForm from './components/SignUpForm';
 import LoginForm from './containers/LoginForm';
 import BoardView from './containers/boards/BoardView';
 import { useSelector } from 'react-redux';
-import { fetchBoardByIdAction, reorderCardsInDifferentColumn, reorderCardsInSameColumn, updateColumnOrderAction  } from './features/boardByIdSlice';
+import { reorderCardsInDifferentColumn, reorderCardsInSameColumn, updateColumnOrderAction  } from './features/boardByIdSlice';
 import { useDispatch } from 'react-redux';
 
 function App() {  
@@ -21,7 +21,7 @@ function App() {
   const onDragEnd = async (result) => {
     
 
-    const { destination, source, draggableId, type } = result;
+    const { destination, source, type } = result;
 
     
     if (!destination) {

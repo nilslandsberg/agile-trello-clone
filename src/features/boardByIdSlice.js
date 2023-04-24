@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
 import authHeader from "../services/auth-header";
 
@@ -150,7 +150,7 @@ const boardByIdSlice = createSlice({
       state.error = undefined;
     });
     builder.addCase(reorderCardsInDifferentColumn.pending, (state, { meta }) => {
-      const { addedColumnCardIds, addedColumnId, removedColumnIds, removedColumnId } = meta.arg;
+      const { addedColumnCardIds, addedColumnId,  removedColumnId } = meta.arg;
      
       // Find the index of the origin column
       const originColumnIndex = state.board.columnInfo.findIndex(column => column._id === removedColumnId);
