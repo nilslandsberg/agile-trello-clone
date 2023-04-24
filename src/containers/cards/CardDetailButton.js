@@ -8,6 +8,7 @@ import { ColumnIndexContext } from "../columns/RenderColumns";
 import { useContext } from 'react';
 import { setCardId, setColumnIndex } from '../../features/columnAndCardInfoSlice';
 import { fetchCardCommentsAction } from '../../features/cardCommentsSlice';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 const CardDetailButton = (cardIndex) => {
   const board = useSelector((state) => state.boardById.board);
@@ -27,11 +28,22 @@ const CardDetailButton = (cardIndex) => {
     await dispatch(fetchCardCommentsAction(clickedCardId));
     await dispatch(setCardId(clickedCardId));
     dispatch(setCardDetailModalOpen(true));
-    
   }
+
+  const cardDetailTooltip = (
+    <Tooltip id="delete-card-tooltip">
+      Card Details
+    </Tooltip>
+  );
   return (
     <>
-      <FontAwesomeIcon className="ms-auto" icon={faPencil} onClick={()=> {handleClick(cardIndex)}} />
+      <OverlayTrigger placement="top" overlay={cardDetailTooltip}>
+        <FontAwesomeIcon 
+          className="ms-auto" 
+          icon={faPencil} 
+          onClick={()=> {handleClick(cardIndex)}} 
+        />
+      </OverlayTrigger>
       <CardDetailModal />
     </>
   )

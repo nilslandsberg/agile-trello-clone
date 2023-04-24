@@ -6,6 +6,7 @@ import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { ColumnIndexContext } from "../columns/RenderColumns";
 import { fetchBoardByIdAction } from "../../features/boardByIdSlice";
 import { deleteColumnAction } from "../../features/columnsSlice";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 
 const DeleteColumn = () => {
@@ -14,8 +15,13 @@ const DeleteColumn = () => {
 
   const columnIndex = useContext(ColumnIndexContext);
  
-  
-  
+  // delete icon action description
+  const deleteColumnTooltip = (
+    <Tooltip id="delete-column-tooltip">
+      Delete Column
+    </Tooltip>
+  );
+
   const dispatch = useDispatch();
 
   const handleClick = async (index) => {
@@ -26,7 +32,11 @@ const DeleteColumn = () => {
   }
 
   return (
-      <FontAwesomeIcon onClick={() => handleClick(columnIndex)} icon={faTrashCan} />
+    <>
+      <OverlayTrigger placement="top" overlay={deleteColumnTooltip}>
+        <FontAwesomeIcon onClick={() => handleClick(columnIndex)} icon={faTrashCan} />
+      </OverlayTrigger>
+    </>
   )
 }
 

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Card } from "react-bootstrap";
+import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
@@ -29,9 +29,18 @@ const DeleteCard = (cardIndex) => {
     await dispatch(fetchBoardByIdAction(board._id));
   }
 
+  // delete icon action description
+  const deleteCardTooltip = (
+    <Tooltip id="delete-card-tooltip">
+      Delete Card
+    </Tooltip>
+  );
+
   return (
     <Card.Footer className="d-flex justify-content-end">
-      <FontAwesomeIcon onClick={() => handleClick(cardIndex)} icon={faTrashCan} />
+      <OverlayTrigger placement="top" overlay={deleteCardTooltip}>
+        <FontAwesomeIcon onClick={() => handleClick(cardIndex)} icon={faTrashCan} />
+      </OverlayTrigger>
     </Card.Footer>
   )
 }

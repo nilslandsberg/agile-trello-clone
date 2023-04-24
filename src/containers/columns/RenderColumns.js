@@ -12,7 +12,6 @@ export const ColumnIndexContext = createContext();
 
 // Renders in BoardView the id of the board is passed down as a prop
 const RenderColumns = () => {
-  
   const board = useSelector((state) => state.boardById.board);
   const columns = board.columnInfo;
 
@@ -43,14 +42,14 @@ const RenderColumns = () => {
                     )}
                   </Droppable> 
                   <Card.Footer 
-                    style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}
+                    className="d-flex justify-content-between align-items-center"
                   >
                     <CreateCardButton 
-                      style={{ alignSelf: 'flex-start' }} 
+                      className="align-self-start" 
                       columnIndex={columnIndex}
                     />
-                    <DeleteColumn style={{ alignSelf: 'flex-end' }} /> 
-                  </Card.Footer>
+                    <DeleteColumn className="align-self-end" title="Delete Column" />
+                    </Card.Footer>
                 </Card>
               )}
             </Draggable>
