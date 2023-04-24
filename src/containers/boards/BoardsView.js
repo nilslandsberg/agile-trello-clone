@@ -6,18 +6,21 @@ import { fetchBoardsAction } from '../../features/boardsSlice';
 import NonAuthView from '../../components/NonAuthView';
 import CreateBoardButton from '../../components/CreateBoardButton';
 import LoadingSpinner from '../../components/LoadingSpinner';
+import { fetchOrgUsersAction } from '../../features/orgUsersSlice';
 
 const BoardsView = () => {
   const boardsArray = useSelector((state) => state.userBoards.boards);
   const isLoading = useSelector((state) => state.userBoards.loading);
   const userIsLoggedIn = useSelector((state) => state.userAuth.isLoggedIn);
+  const organization = useSelector((state) => state.userAuth.organization);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
   useEffect(() => {
     dispatch(fetchBoardsAction());
-  }, [dispatch, ]); 
+    dispatch(fetchOrgUsersAction(organization));
+  }, [dispatch, organization, ]); 
   
   const handleClick = async (e) => {
     const boardId = e.currentTarget.id;

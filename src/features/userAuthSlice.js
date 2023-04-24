@@ -5,7 +5,8 @@ import AuthService from "../services/auth.service";
 
 const userData = JSON.parse(localStorage.getItem("user"));
 
-const user = userData ? userData.user.email : null
+const user = userData ? userData.user.email : null;
+const organization = userData? userData.user.organization: null;
 
 
 export const signup = createAsyncThunk(
@@ -53,7 +54,7 @@ export const logout = createAsyncThunk("auth/logout", async () => {
 });
 
 const initialState = user 
-  ? { isLoggedIn: true, user } 
+  ? { isLoggedIn: true, user, organization } 
   : { isLoggedIn: false };
 
 const userAuthSlice = createSlice({

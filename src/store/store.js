@@ -8,6 +8,7 @@ import cardByIdReducer from '../features/cardDetailSlice';
 import userAuthReducer from '../features/userAuthSlice';
 import authMessageReducer from '../features/authMessageSlice';
 import modalOpenClosedReducer from '../features/modalOpenSlice'
+import orgUsersSliceReducer from '../features/orgUsersSlice';
 
 
 
@@ -22,6 +23,7 @@ export const store = configureStore({
     cardById: cardByIdReducer,
     cardComments: cardCommentsReducer,
     userAuth: userAuthReducer,
+    orgUsers: orgUsersSliceReducer,
     authMessage: authMessageReducer,
     isModalOpen: modalOpenClosedReducer,
   }, 

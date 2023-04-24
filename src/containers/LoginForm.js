@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import { fetchBoardsAction } from "../features/boardsSlice";
 import { useEffect, useState } from "react";
 import LoginAlert from "../components/LoginAlert";
+import { fetchOrgUsersAction } from "../features/orgUsersSlice";
 
 const LoginForm = () => {
   const user = useSelector((state) => state.userAuth);
@@ -19,6 +20,7 @@ const LoginForm = () => {
  const handleFormSubmit = async (data) => {
     setLoading(true);
     await dispatch(login(data));
+    await dispatch(fetchOrgUsersAction(user.organization));
     setLoading(false);
   }
   
