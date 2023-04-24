@@ -7,7 +7,7 @@ const API_URL = 'https://trello-clone-api-crxa.onrender.com/api/columns/'
 
 //action
 export const addColumnAction = createAsyncThunk("column/add", async(body, rejectWithValue) => {
-  // console.log(body);
+
   try {
     const { data } = await axios.post(API_URL, body, authHeader());
 
@@ -21,11 +21,9 @@ export const addColumnAction = createAsyncThunk("column/add", async(body, reject
 });
 
 export const updateColumnTitleAction = createAsyncThunk("columnTitle/update", async({id, title}, rejectWithValue) => {
-  console.log(id);
-  console.log(title)
+
   try {
     const { data } = await axios.patch(API_URL + id, { title: title }, authHeader());
-    console.log(data);
     return data;
   } catch (error) {
     if (!error?.response) {
@@ -34,6 +32,20 @@ export const updateColumnTitleAction = createAsyncThunk("columnTitle/update", as
     return rejectWithValue(error?.response?.data);
   }
 });
+
+export const deleteColumnAction = createAsyncThunk("column/delete", async(id, rejectWithValue) => {
+
+  try {
+    const { data } = await axios.delete(API_URL + id, authHeader());
+    return data;
+  } catch (error) {
+    if (!error?.response) {
+      throw error;
+    }
+    return rejectWithValue(error?.response?.data);
+  }
+});
+
 
 
 const columnsSlice = createSlice({
@@ -60,6 +72,17 @@ const columnsSlice = createSlice({
       state.error = undefined;
     });
     builder.addCase(updateColumnTitleAction.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.payload;
+    });
+    builder.addCase(deleteColumnAction.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(deleteColumnAction.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = undefined;
+    });
+    builder.addCase(deleteColumnAction.rejected, (state, action) => {
       state.loading = false;
       state.error = action?.payload;
     });

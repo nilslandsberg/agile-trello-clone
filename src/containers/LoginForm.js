@@ -20,7 +20,7 @@ const LoginForm = () => {
  const handleFormSubmit = async (data) => {
     setLoading(true);
     await dispatch(login(data));
-    await dispatch(fetchOrgUsersAction(user.organization));
+    dispatch(fetchOrgUsersAction(user.organization));
     setLoading(false);
   }
   

@@ -71,6 +71,7 @@ const userAuthSlice = createSlice({
     builder.addCase(login.fulfilled, (state, action) => {
       state.isLoggedIn = true;
       state.user = action.payload.email;
+      state.organization = action.payload.organization;
     });
     builder.addCase(login.rejected, (state, action) => {
       state.isLoggedIn = false;
@@ -79,6 +80,7 @@ const userAuthSlice = createSlice({
     builder.addCase(logout.fulfilled, (state, action) => {
       state.isLoggedIn = false;
       state.user = null;
+      state.organization = null;
     });
   },
 });

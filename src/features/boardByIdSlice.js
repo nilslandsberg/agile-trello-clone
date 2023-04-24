@@ -17,10 +17,9 @@ export const fetchBoardByIdAction = createAsyncThunk("board/fetch", async(id, re
 });
 
 export const updateBoardTitleAction = createAsyncThunk("boardTitle/update", async({id, title}, rejectWithValue) => {
-  console.log(id);
+
   try {
     const { data } = await axios.patch(API_URL + 'title/' + id, { title: title}, authHeader());
-    console.log(data);
     return data;
   } catch (error) {
     if (!error?.response) {
@@ -31,7 +30,7 @@ export const updateBoardTitleAction = createAsyncThunk("boardTitle/update", asyn
 })
 
 export const updateColumnOrderAction = createAsyncThunk("columnOrder/update", async({ boardId, newColumnOrder }, rejectWithValue) => {
-console.log(newColumnOrder);
+
   try {
     const { data } = await axios.patch(API_URL + 'column-reorder/' + boardId, { newColumnOrder: newColumnOrder }, authHeader());
 
@@ -111,7 +110,6 @@ const boardByIdSlice = createSlice({
       state.error = undefined;
     });
     builder.addCase(updateColumnOrderAction.pending, (state, {meta}) => {
-      console.log('meta', meta);
       state.board = {...state.board, columnInfo: meta.arg.newColumnOrder.map(columnId => {
         const column = state.board.columnInfo.find(column => column._id === columnId);
         return column;

@@ -17,7 +17,6 @@ export const fetchCardByIdAction = createAsyncThunk("card/fetch", async(id, reje
 });
 
 export const updateCardTitleAction = createAsyncThunk("cardTitle/update", async({id, title}, rejectWithValue) => {
-  console.log(id);
   try {
     const { data } = await axios.patch(API_URL + 'title/' + id, { title: title}, authHeader());
     return data;
@@ -44,7 +43,6 @@ export const updateCardTextAction = createAsyncThunk("cardText/update", async({i
 export const addCardLabelAction = createAsyncThunk("cardLabel/update", async(body, rejectWithValue) => {
   try {
     const { data } = await axios.post('https://trello-clone-api-crxa.onrender.com/api/labels/', body, authHeader());
-    console.log(data);
     return data;
   } catch (error) {
     if (!error?.response) {

@@ -21,7 +21,6 @@ export const fetchBoardsAction = createAsyncThunk("boards/fetch", async(rejectWi
 export const addBoardAction = createAsyncThunk("board/add", async(title, rejectWithValue) => {
   try {
     const { data } = await axios.post(API_URL, title, authHeader());
-    console.log(data)
     return data;
   } catch (error) {
     if (!error?.response) {

@@ -43,7 +43,6 @@ function CardLabels() {
         dispatch(fetchCardByIdAction(cardId));
         // remove label from selectedLabels local state
         const updatedSelectedLabels = selectedLabels.filter(label => label.labelColor !== selectedLabel.labelColor);
-        console.log(updatedSelectedLabels);
         setSelectedLabels(updatedSelectedLabels);
     } else {
         // if label is not selected, add it to selectedLabels local state and the card database

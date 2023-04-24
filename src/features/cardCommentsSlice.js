@@ -7,7 +7,6 @@ const API_URL = 'https://trello-clone-api-crxa.onrender.com/api/comments/';
 export const fetchCardCommentsAction = createAsyncThunk("comments/fetch", async(cardId, rejectWithValue) => {
   try {
     const { data } = await axios.get(API_URL + 'all/' + cardId, authHeader());
-    console.log(data);
     return data;
   } catch (error) {
     if (!error?.response) {
@@ -19,8 +18,6 @@ export const fetchCardCommentsAction = createAsyncThunk("comments/fetch", async(
 
 export const addCardCommentAction = createAsyncThunk("comments/add", async(body, rejectWithValue) => {
   try {
-    console.log(body);
-
     const { data } = await axios.post(API_URL, body, authHeader());
     return data;
   } catch (error) {

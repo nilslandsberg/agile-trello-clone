@@ -6,6 +6,7 @@ import CreateCardButton from "../../components/CreateCardButton";
 import CreateColumnButton from "../../components/CreateColumnButton";
 import ColumnTitleChange from "./ColumnTitleChange";
 import RenderCards from "../cards/RenderCards";
+import DeleteColumn from "./DeleteColumn";
 
 export const ColumnIndexContext = createContext();
 
@@ -41,8 +42,14 @@ const RenderColumns = () => {
                       </Card.Body>
                     )}
                   </Droppable> 
-                  <Card.Footer>
-                    <CreateCardButton columnIndex={columnIndex}/> 
+                  <Card.Footer 
+                    style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}
+                  >
+                    <CreateCardButton 
+                      style={{ alignSelf: 'flex-start' }} 
+                      columnIndex={columnIndex}
+                    />
+                    <DeleteColumn style={{ alignSelf: 'flex-end' }} /> 
                   </Card.Footer>
                 </Card>
               )}

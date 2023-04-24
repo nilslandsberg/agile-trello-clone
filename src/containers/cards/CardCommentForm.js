@@ -21,7 +21,6 @@ const CardCommentForm = () => {
       text: data.text,
       cardId: cardId
     }
-    console.log(requestBody)
     await dispatch(addCardCommentAction(requestBody));
     await dispatch(fetchCardCommentsAction(cardId));
     setShowCommentInput(false);
