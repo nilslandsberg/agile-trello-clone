@@ -54,7 +54,7 @@ const NavBar = () => {
             marginRight: "10px"
           }}
         />
-        <span className="navbar-text">Tre-Hello</span>
+        <span className="navbar-text">Tre-Hej!</span>
       </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
