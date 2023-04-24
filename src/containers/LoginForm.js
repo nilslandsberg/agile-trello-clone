@@ -37,7 +37,7 @@ const LoginForm = () => {
 
   return (
     <div className="pt-5">
-      <Card className="col-3 offset-5 text-center">
+      <Card className="col-3 mx-auto" style={{ minWidth: "300px" }}>
         <Card.Header>Login</Card.Header>
           <Card.Body>
           {errorMessage.message && <LoginAlert message={errorMessage.message} />}

@@ -39,7 +39,7 @@ const SignUpForm = () => {
 
   return (
     <div className="pt-5">
-      <Card className="col-3 offset-5 text-center">
+      <Card className="col-3 mx-auto" style={{ minWidth: "300px" }}>
         <Card.Header>Sign Up</Card.Header>
         <Card.Body>
           {errorMessage.message && <SignupAlert message="Account already exists." />}
