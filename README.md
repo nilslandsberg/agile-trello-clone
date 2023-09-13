@@ -19,7 +19,7 @@ Here are some of the key features we plan to include in our Trello clone:
 
 Our Trello clone is built using the following technologies:
 
-- React.js and Redux Toolkit for the frontend (using React-DnD)
+- React.js and Redux Toolkit for the frontend (using React-Beautiful-DnD)
 - Node.js and Express for the backend
 - MongoDB and Mongoose for the database
 
